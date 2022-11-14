@@ -20,6 +20,15 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended:true }));
 
+var carroRouter = require('./routes/carroRouter')
+app.use('/', carroRouter);
+
+var utilitarioRouter = require('./routes/utilitarioRouter')
+app.use('/', utilitarioRouter);
+
+var esportivoRouter = require('./routes/esportivoRouter')
+app.use('/', esportivoRouter);
+
 const PORT = 3000;
 const HOST = '0.0.0.0';
 

@@ -23,11 +23,25 @@ app.use(express.urlencoded({ extended:true }));
 var carroRouter = require('./routes/carroRouter')
 app.use('/', carroRouter);
 
+var esportivoRouter = require('./routes/esportivoRouter')
+app.use('/', esportivoRouter);
+
 var utilitarioRouter = require('./routes/utilitarioRouter')
 app.use('/', utilitarioRouter);
 
-var esportivoRouter = require('./routes/esportivoRouter')
-app.use('/', esportivoRouter);
+var clienteRouter = require('./routes/clienteRouter')
+app.use('/', clienteRouter);
+
+var funcionarioRouter = require('./routes/funcionarioRouter')
+app.use('/', funcionarioRouter);
+
+var promocaoRouter = require('./routes/promocaoRouter')
+app.use('/', promocaoRouter);
+
+var reservaRouter = require('./routes/reservaRouter')
+app.use('/', reservaRouter);
+
+
 
 const PORT = 3000;
 const HOST = '0.0.0.0';

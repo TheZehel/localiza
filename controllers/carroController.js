@@ -24,4 +24,21 @@ module.exports = class CarroController {
 
     }
 
+    static async buscarPlaca(req, res){
+        console.log(req.body);
+        
+        Carro.findOne({ placa: req.body.placa }).then(data => {
+            if(!data) {
+                return res.status(404).json({'mensagem':`carro pela placa ${req.body.placa} não encontrado.`});
+            }
+
+            res.send(data);
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || `Erro ao tentar buscar os dados do carro pela placa: ${placa}.`
+            });
+        });
+
+    }
+
 }

@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router();
 
-const CarroController = require('../controllers/carroController')
+const EsportivoController = require('../controllers/esportivoController')
 
-router.post('/carro', CarroController.inserir)
+router.post('/carro-esportivo', EsportivoController.inserir)
 
 module.exports = router;

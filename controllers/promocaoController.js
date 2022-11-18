@@ -1,4 +1,5 @@
 const Promocao = require('../models/promocao')
+const Cliente = require('../models/cliente')
 
 module.exports = class PromocaoController {
 
@@ -17,6 +18,19 @@ module.exports = class PromocaoController {
         }).catch(error => {
             res.status(500).send({ mensagem: error.message || `Erro ao tentar inserir os dados da promoçao: ${promocao}.` })
         })
+
+    }
+
+    static async enviarPromocao(req, res ){
+        const { id } = req.query;
+
+        const promocao = await Promocao.findById(id);
+        console.log(promocao);
+
+        const clientes = await Cliente.find({});
+        console.log(clientes);
+
+        res.json({ 'promocao': promocao, 'clientes': clientes, });
 
     }
 

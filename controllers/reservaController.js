@@ -40,4 +40,22 @@ module.exports = class ReservaController {
 
     }
 
+    static async atualizar(req, res){
+        console.log(req.body);
+
+        const { id } = req.query;
+
+        Reserva.findByIdAndUpdate(id, req.body, { useFindAndModify: false }).then(data => {
+            if(!data) {
+                res.status(404).send({ mensagem: `Não foi possivel encontrar a reserva pelo Id: ${id}` }); 
+            } else res.send({ mensagem: `Reserva com o Id: ${id} foi atualizada com sucesso.` });
+
+        }).catch(err => {
+            res.status(500).send({
+                message: err.message || `Erro ao tentar atualizar os dados da reserva pelo id: ${id}`
+            });
+        })
+
+    }
+
 }
